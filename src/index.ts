@@ -2,7 +2,7 @@ import { initApollo } from "./apollo";
 
 (async () => {
   try {
-    // await initApollo();
+    await initApollo();
   } catch (e) {
     throw e;
   }
