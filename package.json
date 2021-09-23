@@ -8,7 +8,8 @@
     "dev": "ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dep": "docker-compose -f docker-compose.yml up --build -d",
-    "dep:log": "docker-compose -f docker-compose.yml up --build"
+    "dep:log": "docker-compose -f docker-compose.yml up --build",
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@brickglobal/brick-sdk": "^2.0.1",
