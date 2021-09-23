@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  brick-master:
+  brick-sdk-test:
     container_name: brick-sdk-test
     image: brick-sdk-test
     build:
