@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  brick-master:
+    container_name: brick-sdk-test
+    image: brick-sdk-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "$PORT:$PORT"
+    env_file: .env
+    restart: always
