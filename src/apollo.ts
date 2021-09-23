@@ -1,6 +1,6 @@
 import { ApolloServer } from "apollo-server";
 import { successConsoleLog } from "./color-log";
-import { CONFIG_API_PORT } from "./configs";
+import { CONFIG_PORT } from "./configs";
 import { resolvers } from "./resolvers";
 import { typeDefs } from "./typeDefs";
 
@@ -13,7 +13,7 @@ export const initApollo = async () => {
         ...req,
       }),
     });
-    const { url } = await server.listen({ port: CONFIG_API_PORT });
+    const { url } = await server.listen({ port: CONFIG_PORT });
     successConsoleLog(`🚀 Apollo server ready at ${url}`);
   } catch (e) {
     throw e;
