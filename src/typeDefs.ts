@@ -21,10 +21,21 @@ export const typeDefs = gql`
     status: Float
     action: String
   }
-
+  type LogHistoryResponse {
+    data: [LogCustomerDetailResponse]
+    totalItems: Int
+  }
+  enum SortType {
+    newest
+    oldest
+  }
+  enum LogHistoryAction {
+    all
+  }
   type Query {
     sdk_user_balance_get(customer_id: String!): [AssetBalanceResponse]
     sdk_enterprise_asset_address_get(asset_id: Int!): String
+    sdk_user_log_customer_history_get(customer_id: String!,action: LogHistoryAction, sort: SortType, pageNumber: Int, pageSize: Int): LogHistoryResponse
   }
 
   type Mutation {

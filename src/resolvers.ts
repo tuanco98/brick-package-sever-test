@@ -16,6 +16,17 @@ type LogCustomerDetail = {
   status: Number
   action: String
 }
+type LogHistoryResponse = {
+  data: [LogCustomerDetail]
+  totalItems: number
+}
+enum LogHistoryAction {
+  all = `all`
+}
+enum SortType {
+  newest = 'newest',
+  oldest = `oldest`
+}
 export const resolvers = {
   Query: {
     sdk_user_balance_get: async (parent: any, args: any, ctx: any) => {
@@ -32,6 +43,14 @@ export const resolvers = {
       checkMissing({ asset_id, apikey })
       const brick_v2 = await brickSDK_v2(apikey);
       const res = await brick_v2.enterpriseAddressGet(asset_id) as String;
+      return res
+    },
+    sdk_user_log_customer_history_get: async (parent: any, args: any, ctx: any) => {
+      const { customer_id, action = null, sort = null, pageNumber = null, pageSize = null } = args as {customer_id: String, action?: 'all', sort?: 'newest'|'oldest', pageNumber?: Number, pageSize?: Number }
+      const { apikey } = ctx.req.headers
+      checkMissing({ customer_id, apikey })
+      const brick_v2 = await brickSDK_v2(apikey);
+      const res = await brick_v2.logCustomerHistoryGet(customer_id, action, sort, pageNumber, pageSize) as LogHistoryResponse;
       return res
     },
   },

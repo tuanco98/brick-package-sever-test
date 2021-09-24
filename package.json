@@ -12,7 +12,7 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@brickglobal/brick-sdk": "^2.0.1",
+    "@brickglobal/brick-sdk": "^2.1.0",
     "apollo-server": "^2.25.2",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
